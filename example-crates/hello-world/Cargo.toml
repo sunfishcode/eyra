@@ -1,0 +1,11 @@
+[package]
+name = "hello-world"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+eyra = { path = "../.." }
+
+# This is just an example crate, and not part of the c-ward workspace.
+[workspace]

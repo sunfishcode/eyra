@@ -1,0 +1,34 @@
+[package]
+name = "eyra"
+version = "0.15.2"
+authors = [
+    "Dan Gohman <dev@sunfishcode.online>",
+]
+description = "Rust programs written entirely in Rust"
+documentation = "https://docs.rs/eyra"
+license = "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+repository = "https://github.com/sunfishcode/eyra"
+edition = "2021"
+keywords = ["linux"]
+
+[dependencies]
+c-gull = { version = "0.15.2", default-features = false, features = ["eyra"] }
+
+[dev-dependencies]
+assert_cmd = "2.0.12"
+
+[features]
+default = []
+
+# Enable logging of program and thread startup and shutdown.
+log = ["c-gull/log"]
+
+# Install the `env_logger` crate as a logger.
+env_logger = ["c-gull/env_logger"]
+
+# Disable logging.
+max_level_off = ["c-gull/max_level_off"]
+
+# Enable highly experimental support for performing startup-time relocations,
+# needed to support statically-linked PIE executables.
+experimental-relocate = ["c-gull/experimental-relocate"]
