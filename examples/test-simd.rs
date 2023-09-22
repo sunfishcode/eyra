@@ -1,0 +1,13 @@
+#![feature(portable_simd)]
+
+extern crate eyra;
+
+use core::arch::asm;
+
+fn main() {
+    use core_simd::simd::*;
+    let mut a = f32x4::splat(2.0);
+    unsafe { asm!("# {}", in(reg) &mut a) };
+    assert_eq!(a, f32x4::splat(2.0));
+    assert_eq!(&a as *const _ as usize & 0xf, 0);
+}
