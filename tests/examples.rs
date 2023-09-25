@@ -78,6 +78,7 @@ fn test_example(name: &str, features: &str, stdout: &str, stderr: &str) {
         output
     );
 
+    // Check nm output for any unexpected undefined symbols.
     let output = Command::new("nm")
         .arg("-u")
         .arg(&format!(
@@ -86,11 +87,15 @@ fn test_example(name: &str, features: &str, stdout: &str, stderr: &str) {
         ))
         .output()
         .unwrap();
-    assert_eq!(
-        "                 v __rustc_debug_gdb_scripts_section__\n",
-        String::from_utf8_lossy(&output.stdout),
-        "example {} had unexpected undefined symbols",
-        name
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    // Allow `__rustc_debug_gdb_scripts_section` because it shows up in some
+    // builds and it's a weak external that Rust uses, rather than a reference
+    // to a libc symbol.
+    assert!(
+        stdout == "                 v __rustc_debug_gdb_scripts_section__\n" || stdout == "",
+        "example {} had unexpected undefined symbols:\n{}",
+        name,
+        stdout
     );
 
     let output = Command::new("readelf")
