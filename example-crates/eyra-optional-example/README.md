@@ -10,7 +10,7 @@ shutdown:
 ```console
 $ RUST_LOG=trace cargo +nightly run --quiet --features=eyra,eyra/log,eyra/env_logger
 [TRACE origin::program] Program started
-[TRACE origin::thread] Main Thread[Pid(91601)] initialized
+[TRACE origin::thread] Main Thread[91601] initialized
 [TRACE origin::program] Calling `.init_array`-registered function `0x559006f43500(1, 0x7ffd7e5bacd8, 0x7ffd7e5bace8)`
 [TRACE origin::program] Calling `origin_main(1, 0x7ffd7e5bacd8, 0x7ffd7e5bace8)`
 Hello, world!
