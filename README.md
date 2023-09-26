@@ -80,7 +80,7 @@ hello world program output like this:
 
 ```console
 [TRACE origin::program] Program started
-[TRACE origin::thread] Main Thread[Pid(51383)] initialized
+[TRACE origin::thread] Main Thread[51383] initialized
 [TRACE origin::program] Calling `.init_array`-registered function `0x55e86306bb80(1, 0x7ffd0f76aad8, 0x7ffd0f76aae8)`
 [TRACE origin::program] Calling `origin_main(1, 0x7ffd0f76aad8, 0x7ffd0f76aae8)`
 Hello, world!
