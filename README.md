@@ -121,21 +121,22 @@ Eyra and the libraries it uses have some design goals.
 
 Sometimes in libc implementation code, there's a temptation to say "it's ok
 if some things are technically Undefined Behavior, because this is Low Level
-Code and We Know What We're Doing.
+Code and We Know What We're Doing".
 
 Origin, c-scape, c-gull, rustix, and the others strive to resist this
 temptation, and follow the Rust rules, including strict provenance, I/O safety,
 and all the rest, all the way down to the syscalls.
 
-It's just normal Rust code, as far down as we can go in userspacce, and when we
+It's just normal Rust code, as far down as we can go in userspace, and when we
 eventually do have to switch to inline asm, we do as little of it as we can.
 
 Currently there is only one known place where this goal is not achieved. In a
 "static PIE" executable (eg. built with
 `RUSTFLAGS="-C target-feature=+crt-static")`, the dynamic linker isn't used,
-so the executable has to handle all its relocations itself. Origin's code for
-doing this is currently disabled by default, and can be enabled with the
-"experimental-relocate" cargo feature.
+so the executable has to handle all its relocations itself. However, that
+means storing to memory locations that wouldn't otherwise be considered
+mutable. Origin's code for doing this is currently disabled by default, and
+can be enabled with the "experimental-relocate" cargo feature.
 
 ### C compatibility as a layer on top of Rust, not vice versa
 
