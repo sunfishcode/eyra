@@ -17,7 +17,7 @@ Eyra is a package that supports building Rust programs implemented entirely
 in Rust.
 
 It uses [Origin] for program and thread startup and shutdown, and [c-gull] for
-ABI-compatible libc functions.
+ABI-compatible libc function implementations.
 
 [Origin]: https://github.com/sunfishcode/origin#readme
 [c-gull]: https://github.com/sunfishcode/c-ward/tree/main/c-gull#readme
@@ -108,6 +108,47 @@ versions. It's complete enough to run:
  - [bat](https://github.com/sunfishcode/bat/tree/eyra), including git
    support with libgit2
  - [cargo-watch](https://github.com/sunfishcode/cargo-watch/tree/eyra)
+
+Eyra isn't about making anything safer, for the foreseeable future. The major
+libc implementations are extraordinarily well tested and mature. Eyra for its
+part is experimental and contains lots of `unsafe`.
+
+## Design philosophy
+
+Eyra and the libraries it uses have some design goals.
+
+### Normal Rust, all the way down
+
+Sometimes in libc implementation code, there's a temptation to say "it's ok
+if some things are technically Undefined Behavior, because this is Low Level
+Code and We Know What We're Doing.
+
+Origin, c-scape, c-gull, rustix, and the others strive to resist this
+temptation, and follow the Rust rules, including strict provenance, I/O safety,
+and all the rest, all the way down to the syscalls.
+
+It's just normal Rust code, as far down as we can go in userspacce, and when we
+eventually do have to switch to inline asm, we do as little of it as we can.
+
+Currently there is only one known place where this goal is not achieved. In a
+"static PIE" executable (eg. built with
+`RUSTFLAGS="-C target-feature=+crt-static")`, the dynamic linker isn't used,
+so the executable has to handle all its relocations itself. Origin's code for
+doing this is currently disabled by default, and can be enabled with the
+"experimental-relocate" cargo feature.
+
+### C compatibility as a layer on top of Rust, not vice versa
+
+Eyra is built on a collection of Rust crates with idiomatic Rust APIs, and two
+crates, c-scape and c-gull, which are relatively thin layers on top that
+implement the libc-compatible C ABI.
+
+It's sometimes more work to write the code as separate layers like this, but
+it has the advantage of clearly separating out the `unsafe` associated with
+things like C pointers and strings in libc APIs from the essential `unsafe`
+needed to implement things like system calls, thread primitives, and other
+features. And it means that Rust programs that don't want to go through the C
+compatibility layer can use the underlying crates directly.
 
 [Mustang]: https://github.com/sunfishcode/mustang#readme
 [Origin]: https://github.com/sunfishcode/origin#readme
