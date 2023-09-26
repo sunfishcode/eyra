@@ -132,7 +132,7 @@ eventually do have to switch to inline asm, we do as little of it as we can.
 
 Currently there is only one known place where this goal is not achieved. In a
 "static PIE" executable (eg. built with
-`RUSTFLAGS="-C target-feature=+crt-static`), the dynamic linker isn't used,
+`RUSTFLAGS="-C target-feature=+crt-static"`), the dynamic linker isn't used,
 so the executable has to handle all its relocations itself. However, that
 means storing to memory locations that wouldn't otherwise be considered
 mutable. Origin's code for doing this is currently disabled by default, and
