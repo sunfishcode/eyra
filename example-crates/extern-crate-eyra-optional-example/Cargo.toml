@@ -6,10 +6,7 @@ publish = false
 
 [dependencies]
 # Depend on Eyra... optionally!
-std = { package = "eyra", path = "../..", optional = true }
-
-[features]
-eyra = ["dep:std"]
+eyra = { path = "../..", optional = true }
 
 # This is just an example crate, and not part of the eyra workspace.
 [workspace]

@@ -33,7 +33,7 @@ which = "4.4.0"
 core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 
 [features]
-default = []
+default = ["be-std"]
 
 # Enable logging of program and thread startup and shutdown.
 log = ["c-gull/log"]
@@ -47,3 +47,6 @@ max_level_off = ["c-gull/max_level_off"]
 # Enable highly experimental support for performing startup-time relocations,
 # needed to support statically-linked PIE executables.
 experimental-relocate = ["c-gull/experimental-relocate"]
+
+# Have eyra do `use std::*;` so that it can be used as `std`.
+be-std = []

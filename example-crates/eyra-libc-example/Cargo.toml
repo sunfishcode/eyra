@@ -5,7 +5,7 @@ edition = "2021"
 publish = false
 
 [dependencies]
-eyra = { path = "../.." }
+std = { package = "eyra", path = "../.." }
 libc = "0.2.148"
 
 # This is just an example crate, and not part of the eyra workspace.

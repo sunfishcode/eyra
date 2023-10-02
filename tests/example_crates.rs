@@ -60,6 +60,18 @@ fn example_crate_hello_world() {
 }
 
 #[test]
+fn example_crate_extern_crate_hello_world() {
+    test_crate(
+        "extern-crate-hello-world",
+        &[],
+        &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+}
+
+#[test]
 fn example_crate_eyra_libc_example() {
     test_crate(
         "eyra-libc-example",
@@ -78,7 +90,7 @@ fn example_crate_eyra_panic_example() {
         &[],
         &[],
         "",
-        "thread 'main' panicked at src/main.rs:4:5:\nUh oh!\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
+        "thread 'main' panicked at src/main.rs:2:5:\nUh oh!\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
         Some(101)
     );
 }
@@ -88,6 +100,29 @@ fn example_crate_eyra_optional_example() {
     // Test the crate in non-Eyra mode.
     test_crate(
         "eyra-optional-example",
+        &[],
+        &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+
+    // Test the crate in Eyra mode.
+    test_crate(
+        "eyra-optional-example",
+        &["--features=eyra"],
+        &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+}
+
+#[test]
+fn example_crate_extern_crate_eyra_optional_example() {
+    // Test the crate in non-Eyra mode.
+    test_crate(
+        "extern-crate-eyra-optional-example",
         &[],
         &[],
         "Hello, world!\n",
