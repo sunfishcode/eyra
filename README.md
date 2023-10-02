@@ -32,7 +32,7 @@ Check out [this hello world example].
 
 Eyra needs two things. First, a Cargo.toml dependency, which we can add with:
 
-```
+```console
 cargo add eyra --rename=std
 ```
 
