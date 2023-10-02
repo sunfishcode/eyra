@@ -30,11 +30,10 @@ Check out [this hello world example].
 
 ## In detail
 
-Eyra needs two things. First, a Cargo.toml dependency:
+Eyra needs two things. First, a Cargo.toml dependency, which we can add with:
 
-```toml
-[dependencies]
-std = { package = "eyra", version = "<current-version>" }
+```
+cargo add eyra --rename=std
 ```
 
 And, a build.rs file to add `-nostartfiles` to the link flags to disable the
@@ -46,10 +45,10 @@ fn main() {
 }
 ```
 
-With these two steps, this crate prints "Hello, world!". And under the covers,
-it uses [Origin] to start and stop the program, [c-ward] to handle libc calls
-from `std`, and [rustix] to do the printing, so it's completely implemented in
-Rust.
+With these two steps, on Nightly Rust, on x86-64, x86, aarch64, or riscv64
+Linux, this crate prints "Hello, world!". And under the covers, it uses
+[Origin] to start and stop the program, [c-ward] to handle libc calls from
+`std`, and [rustix] to do the printing, so it's completely implemented in Rust.
 
 ## Optional logging
 
@@ -83,7 +82,7 @@ Eyra is similar to [Mustang] and uses the same underlying code, but instead
 of using a custom target and -Z build-std, Eyra just needs users to add
 `-nostartfiles` to their link line, such as via build.rs in the example.
 
-Like Mustang, Eyra currently runs on Rust Nightly on Linux on x86-64, x86,
+Like Mustang, Eyra currently runs on Nightly Rust on Linux on x86-64, x86,
 aarch64, and riscv64. It aims to support all Linux versions
 [supported by Rust], though at this time it's only tested on relatively recent
 versions. It's complete enough to run:
