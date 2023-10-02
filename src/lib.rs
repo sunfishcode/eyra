@@ -1,6 +1,14 @@
 #![doc = include_str!("../README.md")]
 #![no_std]
 
+// If enabled, re-export `std` so that we can be used as `std` to avoid the
+// `extern crate eyra;`.
+#[cfg(feature = "be-std")]
+extern crate std;
+#[cfg(feature = "be-std")]
+#[doc(hidden)]
+pub use std::*;
+
 /// All the functionality of Eyra is factored out into separate libraries. This
 /// `extern crate` line is needed to ensure that libraries that intercept C
 /// library symbols get linked in.

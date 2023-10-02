@@ -30,28 +30,14 @@ Check out [this hello world example].
 
 ## In detail
 
-Eyra needs three things. First, a Cargo.toml dependency:
+Eyra needs two things. First, a Cargo.toml dependency, which we can add with:
 
-```toml
-[dependencies]
-eyra = "<current-version>"
+```console
+cargo add eyra --rename=std
 ```
 
-The next step is to add an `extern crate`:
-
-```rust
-extern crate eyra;
-
-fn main() {
-    println!("Hello, world!");
-}
-```
-
-This tells Rust that Eyra is actually used and the libraries should actually
-be linked in.
-
-And finally, a build.rs file to add `-nostartfiles` to the link flags to
-disable the host startup code, so that Eyra can provide its own. build.rs:
+And, a build.rs file to add `-nostartfiles` to the link flags to disable the
+host startup code, so that Eyra can provide its own. build.rs:
 
 ```rust,no_run
 fn main() {
@@ -59,10 +45,10 @@ fn main() {
 }
 ```
 
-With these three steps, this crate prints "Hello, world!". And under the
-covers, it uses [Origin] to start and stop the program, [c-ward] to handle
-libc calls from `std`, and [rustix] to do the printing, so it's completely
-implemented in Rust.
+With these two steps, on Nightly Rust, on x86-64, x86, aarch64, or riscv64
+Linux, this crate prints "Hello, world!". And under the covers, it uses
+[Origin] to start and stop the program, [c-ward] to handle libc calls from
+`std`, and [rustix] to do the printing, so it's completely implemented in Rust.
 
 ## Optional logging
 
@@ -72,7 +58,7 @@ as the logger, which can be enabled in Cargo.toml:
 
 ```toml
 [dependencies]
-eyra = { version = "<current-version>", features = ["log", "env_logger"] }
+std = { package = "eyra", version = "<current-version>", features = ["log", "env_logger"] }
 ```
 
 With this, and setting the `RUST_LOG` environment variable to "trace", the
@@ -96,7 +82,7 @@ Eyra is similar to [Mustang] and uses the same underlying code, but instead
 of using a custom target and -Z build-std, Eyra just needs users to add
 `-nostartfiles` to their link line, such as via build.rs in the example.
 
-Like Mustang, Eyra currently runs on Rust Nightly on Linux on x86-64, x86,
+Like Mustang, Eyra currently runs on Nightly Rust on Linux on x86-64, x86,
 aarch64, and riscv64. It aims to support all Linux versions
 [supported by Rust], though at this time it's only tested on relatively recent
 versions. It's complete enough to run:
