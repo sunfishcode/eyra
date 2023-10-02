@@ -38,6 +38,9 @@ default = []
 # Enable logging of program and thread startup and shutdown.
 log = ["c-gull/log"]
 
+# Install `atomic_dbg::log` as a logger.
+atomic-dbg-logger = ["c-gull/atomic-dbg-logger"]
+
 # Install the `env_logger` crate as a logger.
 env_logger = ["c-gull/env_logger"]
 
