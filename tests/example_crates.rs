@@ -71,6 +71,21 @@ fn example_crate_extern_crate_hello_world() {
     );
 }
 
+/// Like `example_crate_extern_crate_hello_world` but uses `-Zbuild-std`. This
+/// doesn't work with `example_crate_hello_world` because of the `std` trick,
+/// but it does work with the `extern crate eyra;` trick.
+#[test]
+fn example_crate_extern_crate_hello_world_z_build_std() {
+    test_crate(
+        "extern-crate-hello-world",
+        &["-Zbuild-std"],
+        &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+}
+
 #[test]
 fn example_crate_eyra_libc_example() {
     test_crate(
