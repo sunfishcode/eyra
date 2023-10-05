@@ -73,8 +73,17 @@ Hello, world!
 [TRACE origin::program] `origin_main` returned `0`
 [TRACE origin::thread] Thread[51383] calling `at_thread_exit`-registered function
 [TRACE origin::thread] Thread[51383] calling `at_thread_exit`-registered function
-[TRACE origin::program] Program exiting
+[TRACE origin::program] Program exiting with status `0`
 ```
+
+## Known Limitations
+
+Known limitations in `Eyra` include:
+
+ - Dynamic linking isn't implemented yet.
+ - Many libc C functions that aren't typically needed by most Rust programs
+   aren't implemented yet.
+ - Enabling LTO doesn't work yet.
 
 ## Background
 
