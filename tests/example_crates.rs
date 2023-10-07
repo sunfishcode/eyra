@@ -60,6 +60,18 @@ fn example_crate_hello_world() {
 }
 
 #[test]
+fn example_crate_hello_world_lto() {
+    test_crate(
+        "hello-world",
+        &["--release"],
+        &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+}
+
+#[test]
 fn example_crate_extern_crate_hello_world() {
     test_crate(
         "extern-crate-hello-world",

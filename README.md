@@ -83,7 +83,6 @@ Known limitations in `Eyra` include:
  - Dynamic linking isn't implemented yet.
  - Many libc C functions that aren't typically needed by most Rust programs
    aren't implemented yet.
- - Enabling LTO doesn't work yet.
 
 ## Background
 
