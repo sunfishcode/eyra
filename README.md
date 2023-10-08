@@ -84,6 +84,23 @@ Known limitations in `Eyra` include:
  - Many libc C functions that aren't typically needed by most Rust programs
    aren't implemented yet.
 
+## Compatibility with `-Zbuild-std`
+
+Eyra works with `-Zbuild-std`, however the `std` trick used above doesn't work,
+so it's necessary to instead use this `cargo add` invocation:
+
+```console
+cargo add eyra
+```
+
+and to also add this line to the program's `main.rs` file:
+
+```rust,no_run
+extern crate eyra;
+```
+
+to ensure that the Eyra libraries are linked in.
+
 ## Background
 
 Eyra is similar to [Mustang] and uses the same underlying code, but instead
