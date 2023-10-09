@@ -107,7 +107,7 @@ Eyra can be used with the techniques in [min-sized-rust] to produce very
 small statically-linked binaries. Check out [the hello-world-small example].
 
 [min-sized-rust]: https://github.com/johnthagen/min-sized-rust
-[the hello-world-small example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small/
+[the hello-world-small example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small/#readme
 
 ## Background
 

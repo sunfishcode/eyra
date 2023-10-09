@@ -11,7 +11,7 @@ $ RUSTFLAGS="-Zlocation-detail=none -C relocation-model=static -Ctarget-feature=
 ```
 
 This applies all the techniques described on the [min-sized-rust] page
-before [Remove `core::fmt` with `#![no_main]` and Careful Usage of `libstd`].
+before [Remove `core::fmt` with `no_main` and Careful Usage of `libstd`].
 
 As of this writing, using all these same optimizations without Eyra, using
 `x86_64-unknown-linux-musl` (which produces smaller statically-linked binaries
@@ -26,6 +26,6 @@ consider using [Origin Studio] if you want to go there but still have
 [hello-world]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world/
 [min-sized-rust]: https://github.com/johnthagen/min-sized-rust
 [workaround to support -Zbuild-std]: https://github.com/sunfishcode/eyra/blob/main/README.md#compatibility-with--zbuild-std
-[Remove `core::fmt` with `#![no_main]` and Careful Usage of `libstd`]: https://github.com/johnthagen/min-sized-rust#remove-corefmt-with-no_main-and-careful-usage-of-libstd
+[Remove `core::fmt` with `no_main` and Careful Usage of `libstd`]: https://github.com/johnthagen/min-sized-rust#remove-corefmt-with-no_main-and-careful-usage-of-libstd
 [using Origin directly]: https://github.com/sunfishcode/origin/tree/main/example-crates/tiny
 [Origin Studio]: https://github.com/sunfishcode/origin-studio
