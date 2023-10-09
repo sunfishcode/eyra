@@ -1,0 +1,19 @@
+[package]
+name = "hello-world-small"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+eyra = { path = "../.." }
+
+[profile.release]
+# Enable options from min-sized-rust:
+strip = true  # Automatically strip symbols from the binary.
+opt-level = "z"  # Optimize for size.
+lto = true
+codegen-units = 1
+panic = "abort"
+
+# This is just an example crate, and not part of the c-ward workspace.
+[workspace]
