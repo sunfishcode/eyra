@@ -62,9 +62,28 @@ fn example_crate_hello_world() {
 #[test]
 fn example_crate_hello_world_lto() {
     test_crate(
-        "hello-world",
+        "hello-world-lto",
         &["--release"],
         &[],
+        "Hello, world!\n",
+        "",
+        None,
+    );
+}
+
+#[test]
+fn example_crate_hello_world_small() {
+    test_crate(
+        "hello-world-small",
+        &[
+            "--release",
+            "-Zbuild-std=std,panic_abort",
+            "-Zbuild-std-features=panic_immediate_abort",
+        ],
+        &[(
+            "RUSTFLAGS",
+            "-Zlocation-detail=none -Crelocation-model=static -Ctarget-feature=+crt-static",
+        )],
         "Hello, world!\n",
         "",
         None,
