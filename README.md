@@ -24,12 +24,6 @@ ABI-compatible libc function implementations.
 
 ## Quick start
 
-Check out [this hello world example].
-
-[this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world/
-
-## In detail
-
 Eyra needs two things. First, a Cargo.toml dependency, which we can add with:
 
 ```console
@@ -49,6 +43,12 @@ With these two steps, on Nightly Rust, on x86-64, x86, aarch64, or riscv64
 Linux, this crate prints "Hello, world!". And under the covers, it uses
 [Origin] to start and stop the program, [c-ward] to handle libc calls from
 `std`, and [rustix] to do the printing, so it's completely implemented in Rust.
+
+## Example
+
+For an example of the above steps, check out [this hello world example].
+
+[this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world/
 
 ## Optional logging
 
