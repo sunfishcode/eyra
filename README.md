@@ -55,7 +55,7 @@ Other examples include [enabling LTO],
 [adding Eyra as an optional dependency].
 
 [this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world#readme
-[using LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
+[enabling LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
 [using min-sized-rust technique to produce small binaries]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small#readme
 [adding Eyra as an optional dependency]: https://github.com/sunfishcode/eyra/tree/main/example-crates/eyra-optional-example#readme
 
