@@ -17,14 +17,16 @@ Eyra is a package that supports building Rust programs implemented entirely
 in Rust.
 
 It uses [Origin] for program and thread startup and shutdown, and [c-gull] for
-ABI-compatible libc function implementations.
+ABI-compatible libc function implementations. It currently works on
+Nightly Rust on Linux on x86-64, x86, aarch64, and riscv64.
 
 [Origin]: https://github.com/sunfishcode/origin#readme
 [c-gull]: https://github.com/sunfishcode/c-ward/tree/main/c-gull#readme
 
 ## Quick start
 
-Eyra needs two things. First, a Cargo.toml dependency, which we can add with:
+Running a Rust program under Eyra needs two steps. First, a Cargo.toml
+dependency, which we can add with:
 
 ```console
 cargo add eyra --rename=std
@@ -39,16 +41,23 @@ fn main() {
 }
 ```
 
-With these two steps, on Nightly Rust, on x86-64, x86, aarch64, or riscv64
-Linux, this crate prints "Hello, world!". And under the covers, it uses
-[Origin] to start and stop the program, [c-ward] to handle libc calls from
-`std`, and [rustix] to do the printing, so it's completely implemented in Rust.
+With that, `cargo build`, `cargo run`, `cargo test` (with Nightly) and so on
+work normally. Under the covers, it's using [Origin] to start and stop the
+program, [c-ward] to handle libc calls from `std`, and [rustix] to do the
+printing, so it's completely implemented in Rust.
 
-## Example
+## Examples
 
 For an example of the above steps, check out [this hello world example].
 
-[this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world/
+Other examples include [enabling LTO],
+[using min-sized-rust technique to produce small binaries] and
+[adding Eyra as an optional dependency].
+
+[this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world#readme
+[using LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
+[using min-sized-rust technique to produce small binaries]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small#readme
+[adding Eyra as an optional dependency]: https://github.com/sunfishcode/eyra/tree/main/example-crates/eyra-optional-example#readme
 
 ## Optional logging
 
