@@ -50,9 +50,10 @@ printing, so it's completely implemented in Rust.
 
 For an example of the above steps, check out [this hello world example].
 
-Other examples include [enabling LTO],
-[using min-sized-rust technique to produce small binaries] and
-[adding Eyra as an optional dependency].
+Other examples include
+ - [enabling LTO],
+ - [using min-sized-rust technique to produce small binaries], and
+ - [adding Eyra as an optional dependency].
 
 [this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world#readme
 [enabling LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
