@@ -60,6 +60,26 @@ Other examples include
 [using min-sized-rust technique to produce small binaries]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small#readme
 [adding Eyra as an optional dependency]: https://github.com/sunfishcode/eyra/tree/main/example-crates/eyra-optional-example#readme
 
+## Fully static linking
+
+Eyra executables don't depend on any dynamic libraries, however by default they
+do still depend on a dynamic linker (eg. "/lib64/ld-linux-x86-64.so.2").
+
+For fully static linking, there are currently two options:
+
+ - Build with
+   `RUSTFLAGS=-C target-feature=+crt-static -C relocation-model=static`. This
+   disables Position-Independent Executable (PIE) mode, which is
+   straightforward, however it loses the security benefits of
+   Address-Space Layout Randomization (ASLR).
+
+ - Build with `RUSTFLAGS=-C target-feature=+crt-static` and enable the
+   `experimental-relocate` feature. This allows PIE mode and ASLR to work,
+   however it does so by enabling an experimental implementation of
+   relocations. This code seems to be working in practice so far, however it
+   involves Rust code patching itself as it runs, which is outside of any Rust
+   semantics.
+
 ## Optional logging
 
 Eyra has a `log` feature to enable Rust `log` tracing of program and thread
