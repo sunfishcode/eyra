@@ -157,6 +157,8 @@ versions. It's complete enough to run:
  - [bat](https://github.com/sunfishcode/bat/tree/eyra), including git
    support with libgit2
  - [cargo-watch](https://github.com/sunfishcode/cargo-watch/tree/eyra)
+ - [nushell](https://github.com/sunfishcode/nushell/tree/eyra), with a
+   few workarounds
 
 Eyra isn't about making anything safer, for the foreseeable future. The major
 libc implementations are extraordinarily well tested and mature. Eyra for its
