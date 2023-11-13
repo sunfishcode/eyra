@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.15.15", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.15.18", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -33,7 +33,11 @@ which = "5.0.0"
 core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 
 [features]
-default = ["be-std"]
+default = ["be-std", "lock-environ"]
+
+# This enables use of an `RwLock` within `getenv`, `setenv`, and related
+# functions, to make them thread-safe.
+lock-environ = ["c-gull/lock-environ"]
 
 # Enable logging of program and thread startup and shutdown.
 log = ["c-gull/log"]
