@@ -65,7 +65,7 @@ Other examples include
 Why use Eyra?
 
  - It fixes Rust's [`set_var` unsoundness issue]. The environment-variable
-   implementation uses an `RwLock` internally (it is optional, but enabled by
+   implementation leaks memory internally (it is optional, but enabled by
    default), so `setenv` etc. are thread-safe.
 
  - [Whole-program LTO], including the libc. This sometimes produces smaller
