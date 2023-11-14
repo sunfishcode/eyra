@@ -60,6 +60,60 @@ Other examples include
 [using min-sized-rust technique to produce small binaries]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small#readme
 [adding Eyra as an optional dependency]: https://github.com/sunfishcode/eyra/tree/main/example-crates/eyra-optional-example#readme
 
+## Why?
+
+Why use Eyra?
+
+ - It fixes Rust's [`set_var` unsoundness issue]. The environment-variable
+   implementation uses an `RwLock` internally (it is optional, but enabled by
+   default), so `setenv` etc. are thread-safe.
+
+ - [Whole-program LTO], including the libc. This sometimes produces smaller
+   static binaries, and sometimes produces faster code (though on the other
+   hand, sometimes it doesn't, though on the first hand, there are still
+   low-hanging fruit, so consider trying it and filing issues).
+
+   For even more code-size reductions, see the techniques in
+   [the hello-world-small example].
+
+ - Support for compiling programs with alternate calling conventions, with
+   [Eyra and `-Zbuild-std`].
+
+ - [Fully static linking] that supports the platform NSS/DNS config. "Is such
+   a thing even possible?", "Yes it is."
+
+ - Or, bring your own reason! Be creative and do your own thing, and tell us
+   about it!
+
+Why not use Eyra?
+
+ - It's not as mature as the major libc implementations.
+
+ - It's not as complete as the major libc implementations. It can run most Rust
+   code, and some popular C libraries, but still lacks a lot of things used by
+   typical C code.
+
+ - It currently depends on Rust Nightly and only runs on Linux, and currently
+   only on x86-64, x86, aarch64, and riscv64.
+
+ - It can't currently run under Miri because Miri doesn't currently recognize
+   syscalls made from assembly code. That said, Eyra does strive to adhere to
+   strict provenance and to avoid undefined behavior throughout, so if Miri
+   were to gain support for such syscalls, Eyra should be well-positioned.
+
+ - No support for dynamic linking.
+
+It might seem like "memory safety" might be a reason to use Eyra, and Eyra does
+have a lot of code written in safe Rust, so it does benefit some from Rust's
+memory safety. However, Eyra also has a lot of `unsafe` code (it's unavoidable
+for implementing a libc). Until this code has been more throughly proven, it's
+not realistic to consider it more safe than mature C code.
+
+[Whole-program LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
+[`set_var` unsoundness issue]: https://github.com/rust-lang/rust/issues/27970
+[Eyra and `-Zbuild-std`]: #compatibility-with--zbuild-std
+[Fully static linking]: #fully-static-linking
+
 ## Fully static linking
 
 Eyra executables don't depend on any dynamic libraries, however by default they
@@ -106,18 +160,10 @@ Hello, world!
 [TRACE origin::program] Program exiting with status `0`
 ```
 
-## Known Limitations
-
-Known limitations in `Eyra` include:
-
- - Dynamic linking isn't implemented yet.
- - Many libc C functions that aren't typically needed by most Rust programs
-   aren't implemented yet.
-
 ## Compatibility with `-Zbuild-std`
 
-Eyra works with `-Zbuild-std`, however the `std` trick used above doesn't work,
-so it's necessary to instead use this `cargo add` invocation:
+Eyra works with `-Zbuild-std`, however the `--rename=std` trick used above
+doesn't work, so it's necessary to instead use this `cargo add` invocation:
 
 ```console
 cargo add eyra
@@ -139,7 +185,7 @@ small statically-linked binaries. Check out [the hello-world-small example].
 [min-sized-rust]: https://github.com/johnthagen/min-sized-rust
 [the hello-world-small example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small/#readme
 
-## Background
+## Relationship to Mustang
 
 Eyra is similar to [Mustang] and uses the same underlying code, but instead
 of using a custom target and -Z build-std, Eyra just needs users to add
@@ -159,10 +205,6 @@ versions. It's complete enough to run:
  - [cargo-watch](https://github.com/sunfishcode/cargo-watch/tree/eyra)
  - [nushell](https://github.com/sunfishcode/nushell/tree/eyra), with a
    few workarounds
-
-Eyra isn't about making anything safer, for the foreseeable future. The major
-libc implementations are extraordinarily well tested and mature. Eyra for its
-part is experimental and contains lots of `unsafe`.
 
 ## Design philosophy
 
