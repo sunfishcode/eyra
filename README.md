@@ -54,11 +54,13 @@ Other examples include
  - [enabling LTO],
  - [using min-sized-rust technique to produce small binaries], and
  - [adding Eyra as an optional dependency].
+ - [building a program completely from source].
 
 [this hello world example]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world#readme
 [enabling LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme
 [using min-sized-rust technique to produce small binaries]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-small#readme
 [adding Eyra as an optional dependency]: https://github.com/sunfishcode/eyra/tree/main/example-crates/eyra-optional-example#readme
+[building a program completely from source]: https://github.com/sunfishcode/eyra/tree/main/example-crates/all-from-source#readme
 
 ## Why?
 
@@ -76,8 +78,8 @@ Why use Eyra?
    For even more code-size reductions, see the techniques in
    [the hello-world-small example].
 
- - Support for compiling programs with alternate calling conventions, with
-   [Eyra and `-Zbuild-std`].
+ - Support for compiling programs with alternate calling conventions, using
+   [Eyra and `-Zbuild-std`] to [build a program completely from source].
 
  - [Fully static linking] that supports the platform NSS/DNS config. "Is such
    a thing even possible?", "Yes it is."
@@ -249,3 +251,4 @@ compatibility layer can use the underlying crates directly.
 [c-ward]: https://github.com/sunfishcode/c-ward#readme
 [rustix]: https://github.com/bytecodealliance/rustix#readme
 [supported by Rust]: https://doc.rust-lang.org/nightly/rustc/platform-support.html
+[build a program completely from source]: https://github.com/sunfishcode/eyra/tree/main/example-crates/all-from-source#readme
