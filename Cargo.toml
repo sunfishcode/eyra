@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.15.19", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.15.20", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -33,7 +33,7 @@ which = "5.0.0"
 core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 
 [features]
-default = ["be-std", "threadsafe-setenv"]
+default = ["be-std", "threadsafe-setenv", "use-compiler-builtins"]
 
 # This makes `setenv` and friends thread-safe by leaking memory.
 threadsafe-setenv = ["c-gull/threadsafe-setenv"]
@@ -56,6 +56,9 @@ experimental-relocate = ["c-gull/experimental-relocate"]
 
 # Have eyra do `use std::*;` so that it can be used as `std`.
 be-std = []
+
+# Should c-scape's `memcpy` etc. use compiler-builtins?
+use-compiler-builtins = ["c-gull/use-compiler-builtins"]
 
 # Enable `todo!()` stubs for unimplemented functions.
 todo = ["c-gull/todo"]

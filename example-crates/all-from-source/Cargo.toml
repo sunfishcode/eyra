@@ -1,0 +1,17 @@
+[package]
+name = "all-from-source"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+# Disable the "use-compiler-builtins" feature, to ensure that we build
+# `memcpy` etc. from source instead of using the prebuilt library.
+eyra = { path = "../..", default-features = false, features = ["be-std", "threadsafe-setenv"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# This is just an example crate, and not part of the c-ward workspace.
+[workspace]
