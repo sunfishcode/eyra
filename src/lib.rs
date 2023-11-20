@@ -1,10 +1,8 @@
 #![doc = include_str!("../README.md")]
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 // If enabled, re-export `std` so that we can be used as `std` to avoid the
 // `extern crate eyra;`.
-#[cfg(feature = "be-std")]
-extern crate std;
 #[cfg(feature = "be-std")]
 #[doc(hidden)]
 pub use std::*;

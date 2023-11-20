@@ -186,3 +186,8 @@ fn example_crate_extern_crate_eyra_optional_example() {
         None,
     );
 }
+
+#[test]
+fn example_crate_no_std() {
+    test_crate("no-std", &[], &[], "", "", None);
+}
