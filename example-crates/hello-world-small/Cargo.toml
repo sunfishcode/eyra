@@ -15,5 +15,5 @@ lto = true
 codegen-units = 1
 panic = "abort"
 
-# This is just an example crate, and not part of the c-ward workspace.
+# This is just an example crate, and not part of the eyra workspace.
 [workspace]

@@ -13,5 +13,5 @@ eyra = { path = "../..", default-features = false, features = ["be-std", "thread
 lto = true
 codegen-units = 1
 
-# This is just an example crate, and not part of the c-ward workspace.
+# This is just an example crate, and not part of the eyra workspace.
 [workspace]

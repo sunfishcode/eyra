@@ -7,5 +7,5 @@ publish = false
 [dependencies]
 eyra = { path = "../.." }
 
-# This is just an example crate, and not part of the c-ward workspace.
+# This is just an example crate, and not part of the eyra workspace.
 [workspace]

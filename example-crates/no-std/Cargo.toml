@@ -1,15 +1,12 @@
 [package]
-name = "hello-world-lto"
+name = "no-std"
 version = "0.0.0"
 edition = "2021"
 publish = false
 
 [dependencies]
-std = { package = "eyra", path = "../.." }
-
-# Enable LTO.
-[profile.release]
-lto = true
+eyra = { path = "../..", default-features = false }
+rustix-dlmalloc = { version = "0.1.0", features = ["global"] }
 
 # This is just an example crate, and not part of the eyra workspace.
 [workspace]

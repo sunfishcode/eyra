@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.15.22", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.15.25", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -35,6 +35,9 @@ core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 [features]
 default = ["be-std", "threadsafe-setenv", "use-compiler-builtins"]
 
+# Enable features that depend on std. Disable this for `no_std`.
+std = ["c-gull/std"]
+
 # This makes `setenv` and friends thread-safe by leaking memory.
 threadsafe-setenv = ["c-gull/threadsafe-setenv"]
 
@@ -45,7 +48,7 @@ log = ["c-gull/log"]
 atomic-dbg-logger = ["c-gull/atomic-dbg-logger"]
 
 # Install the `env_logger` crate as a logger.
-env_logger = ["c-gull/env_logger"]
+env_logger = ["c-gull/env_logger", "std"]
 
 # Disable logging.
 max_level_off = ["c-gull/max_level_off"]
@@ -55,7 +58,7 @@ max_level_off = ["c-gull/max_level_off"]
 experimental-relocate = ["c-gull/experimental-relocate"]
 
 # Have eyra do `use std::*;` so that it can be used as `std`.
-be-std = []
+be-std = ["std"]
 
 # Should c-scape's `memcpy` etc. use compiler-builtins?
 use-compiler-builtins = ["c-gull/use-compiler-builtins"]
