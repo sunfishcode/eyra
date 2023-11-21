@@ -42,7 +42,7 @@ fn main() {
 ```
 
 With that, `cargo build`, `cargo run`, `cargo test` (with Nightly) and so on
-with a `*-unknown-linux-gnu*` target work normally.
+will work normally with any `*-unknown-linux-gnu*` target.
 
 Under the covers, it's using [Origin] to start and stop the program, [c-ward]
 to handle libc calls from `std`, and [rustix] to do the printing, so it's
