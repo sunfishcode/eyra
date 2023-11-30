@@ -32,6 +32,11 @@ which = "5.0.0"
 # Test that the core_simd crate works under mustang.
 core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 
+# When generating documentation for docs.rs, don't enable "be-std", since we
+# don't need to duplicate std's documentation.
+[package.metadata.docs.rs]
+no-default-features = true
+
 [features]
 default = ["be-std", "threadsafe-setenv", "use-compiler-builtins"]
 
