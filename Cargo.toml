@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.15.32", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.15.36", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -75,3 +75,6 @@ extra-syscalls = ["c-gull/extra-syscalls"]
 
 # Enable `todo!()` stubs for unimplemented functions.
 todo = ["c-gull/todo"]
+
+# Enable `unimplemented!()` stubs for deprecated functions.
+deprecated-and-unimplemented = ["c-gull/deprecated-and-unimplemented"]
