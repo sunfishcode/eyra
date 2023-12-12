@@ -210,6 +210,13 @@ versions. It's complete enough to run:
  - [nushell](https://github.com/sunfishcode/nushell/tree/eyra), with a
    few workarounds
 
+## Compiling C programs
+
+Eyra can also be compiled into a libc.a that can be used to compile C
+programs; see the [eyra-c] repository.
+
+[eyra-c]: https://github.com/sunfishcode/eyra-c
+
 ## Design philosophy
 
 Eyra and the libraries it uses have some design goals.
