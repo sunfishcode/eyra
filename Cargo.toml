@@ -13,13 +13,13 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.15.36", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.15.39", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
 similar-asserts = "1.1.0"
 rand = "0.8.4"
-libc = "0.2.138"
+libc = "0.2.151"
 cfg-if = "1.0.0"
 rand_xorshift = "0.3.0"
 
