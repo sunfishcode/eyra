@@ -1,6 +1,6 @@
 [package]
 name = "eyra"
-version = "0.16.8"
+version = "0.16.9"
 authors = [
     "Dan Gohman <dev@sunfishcode.online>",
 ]
