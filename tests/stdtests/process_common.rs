@@ -2,8 +2,6 @@
 //! library/std/src/sys/unix/process/process_common/tests.rs at revision
 //! a52c79e859142c1cd5c0c5bdb73f16b754e1b98f.
 
-extern crate eyra;
-
 use std::ffi::OsStr;
 use std::io::{Read, Write};
 use std::mem;

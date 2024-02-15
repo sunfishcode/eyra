@@ -2,8 +2,6 @@
 //! library/std/src/sync/once/tests.rs at revision
 //! f42e96149dd03e816b8bc3c329e7b9a5d12fcdab.
 
-extern crate eyra;
-
 use std::panic;
 use std::sync::mpsc::channel;
 use std::sync::Once;

@@ -2,8 +2,6 @@
 //! library/std/src/sync/barrier.rs at revision
 //! 497ee321af3b8496eaccd7af7b437f18bab81abf.
 
-extern crate eyra;
-
 use std::sync::mpsc::{channel, TryRecvError};
 use std::sync::{Arc, Barrier};
 use std::thread;

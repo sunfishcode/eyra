@@ -2,8 +2,6 @@
 //! library/std/src/sync/mpsc/tests.rs at revision
 //! 5fd561dea24d137734195d8d2dc82fe179553b2d.
 
-extern crate eyra;
-
 use std::env;
 use std::sync::mpsc::*;
 use std::thread;

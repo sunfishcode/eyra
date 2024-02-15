@@ -2,17 +2,9 @@
 //! library/std/src/fs/tests.rs at revision
 //! defa2456246a8272ceace9c1cdccdf2e4c36175e.
 
-#![feature(io_error_uncategorized)]
-#![feature(read_buf)]
-#![feature(maybe_uninit_uninit_array)]
-#![feature(core_io_borrowed_buf)]
-
-extern crate eyra;
-
-mod sys_common;
-
 use std::io::prelude::*;
 
+use super::sys_common::io::test::{tmpdir, TempDir};
 use std::env;
 use std::fs::{self, File, OpenOptions};
 use std::io::{BorrowedBuf, ErrorKind, SeekFrom};
@@ -22,7 +14,6 @@ use std::str;
 use std::sync::Arc;
 use std::thread;
 use std::time::{Duration, Instant};
-use sys_common::io::test::{tmpdir, TempDir};
 
 use rand::{rngs::StdRng, RngCore, SeedableRng};
 

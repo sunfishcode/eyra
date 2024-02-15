@@ -2,11 +2,7 @@
 //! library/std/src/time/tests.rs at revision
 //! 72a25d05bf1a4b155d74139ef700ff93af6d8e22.
 
-#![feature(cfg_target_has_atomic)]
-#![feature(duration_constants)]
 #![allow(soft_unstable)]
-
-extern crate eyra;
 
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 #[cfg(feature = "bench")]

@@ -2,8 +2,6 @@
 //! library/std/tests/thread.rs at revision
 //! 9b18b4440a8d8b052ef454dba9fdb95be99485e7.
 
-extern crate eyra;
-
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;

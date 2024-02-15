@@ -2,8 +2,6 @@
 //! library/std/src/thread/tests.rs at revision
 //! eb14dd863a0d8af603c6783b10efff8454944c15.
 
-extern crate eyra;
-
 use std::any::Any;
 use std::mem;
 use std::panic::panic_any;

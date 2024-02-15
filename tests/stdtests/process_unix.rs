@@ -2,8 +2,6 @@
 //! library/std/src/sys/unix/process/process_unix/tests.rs at revision
 //! 0b35f448f8e9f39ed6fc1c494eeb331afba513bc.
 
-extern crate eyra;
-
 use std::os::unix::process::{CommandExt, ExitStatusExt};
 use std::panic::catch_unwind;
 use std::process::Command;

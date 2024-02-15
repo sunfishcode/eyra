@@ -2,8 +2,6 @@
 //! library/std/src/sync/mutex/tests.rs at revision
 //! 72a25d05bf1a4b155d74139ef700ff93af6d8e22.
 
-extern crate eyra;
-
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::mpsc::channel;
 use std::sync::Condvar;

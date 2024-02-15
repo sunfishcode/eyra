@@ -2,12 +2,7 @@
 //! library/std/src/sys/unix/kernel_copy/tests.rs at revision
 //! 5c0d76dbe1669c96f1959d7b0b1d4de7e9a47c43.
 
-#![feature(try_blocks)]
-
-extern crate eyra;
-
-mod sys_common;
-
+use super::sys_common::io::test::tmpdir;
 use std::fs::OpenOptions;
 #[cfg(feature = "bench")]
 use std::io;
@@ -16,7 +11,6 @@ use std::io::SeekFrom;
 use std::io::{BufRead, Read, Seek, Write};
 #[cfg(feature = "bench")]
 use std::os::unix::io::AsRawFd;
-use sys_common::io::test::tmpdir;
 
 #[test]
 fn copy_specialization() -> Result<()> {
