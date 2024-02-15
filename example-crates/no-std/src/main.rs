@@ -1,10 +1,8 @@
 #![no_std]
 #![no_main]
-#![feature(rustc_private)]
 #![feature(lang_items)]
 #![allow(internal_features)]
 
-extern crate libc;
 extern crate eyra;
 
 #[no_mangle]
