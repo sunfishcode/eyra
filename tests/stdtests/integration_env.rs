@@ -2,15 +2,12 @@
 //! library/std/tests/env.rs at revision
 //! 9b18b4440a8d8b052ef454dba9fdb95be99485e7.
 
-extern crate eyra;
-
 use std::env::*;
 use std::ffi::{OsStr, OsString};
 
 use rand::distributions::{Alphanumeric, DistString};
 
-mod common;
-use common::test_rng;
+use super::common::test_rng;
 
 #[track_caller]
 fn make_rand_name() -> OsString {

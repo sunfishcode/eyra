@@ -2,16 +2,7 @@
 //! library/std/src/net/ip/tests.rs at revision
 //! c1a5ec7faf6c32af2f0aae1af4420e1bb1a3a7fe.
 
-#![feature(ip)]
-#![feature(const_ip)]
-#![feature(const_ipv4)]
-#![feature(const_ipv6)]
-
-extern crate eyra;
-
-mod net;
-
-use crate::net::test::{sa4, sa6, tsa};
+use super::net::test::{sa4, sa6, tsa};
 use std::net::*;
 use std::str::FromStr;
 

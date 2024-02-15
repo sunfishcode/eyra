@@ -4,8 +4,6 @@
 
 #![allow(dead_code)]
 
-extern crate eyra;
-
 use std::cell::RefCell;
 use std::panic::{AssertUnwindSafe, UnwindSafe};
 use std::rc::Rc;

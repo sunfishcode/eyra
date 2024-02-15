@@ -7,13 +7,11 @@
 //! Note that this test changes the current directory so
 //! should not be in the same process as other tests.
 
-extern crate eyra;
-
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-mod common;
+use super::common;
 
 // On some platforms, setting the current directory will prevent deleting it.
 // So this helper ensures the current directory is reset.

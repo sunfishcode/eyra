@@ -2,8 +2,6 @@
 //! library/std/src/sync/condvar/tests.rs at revision
 //! 21c5f780f464b27802d0ee0f86c95eb29881096b.
 
-extern crate eyra;
-
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::mpsc::channel;
 use std::sync::{Arc, Condvar, Mutex};

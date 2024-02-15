@@ -2,11 +2,7 @@
 //! library/std/src/net/addr/tests.rs at revision
 //! 497ee321af3b8496eaccd7af7b437f18bab81abf.
 
-extern crate eyra;
-
-mod net;
-
-use crate::net::test::{sa4, sa6, tsa};
+use super::net::test::{sa4, sa6, tsa};
 use std::net::*;
 
 #[test]

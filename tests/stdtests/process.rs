@@ -2,13 +2,6 @@
 //! library/std/src/process/tests.rs at revision
 //! defa2456246a8272ceace9c1cdccdf2e4c36175e.
 
-#![feature(io_error_uncategorized)]
-#![feature(read_buf)]
-#![feature(maybe_uninit_uninit_array)]
-#![feature(core_io_borrowed_buf)]
-
-extern crate eyra;
-
 use std::io::prelude::*;
 
 use std::io::{BorrowedBuf, ErrorKind};

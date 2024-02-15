@@ -2,8 +2,6 @@
 //! library/std/src/sync/rwlock/tests.rs at revision
 //! 72a25d05bf1a4b155d74139ef700ff93af6d8e22.
 
-extern crate eyra;
-
 use rand::{self, Rng};
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::mpsc::channel;

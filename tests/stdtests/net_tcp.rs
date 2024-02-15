@@ -2,14 +2,7 @@
 //! library/std/src/net/tcp/tests.rs at revision
 //! 497ee321af3b8496eaccd7af7b437f18bab81abf.
 
-#![feature(io_error_uncategorized)]
-#![feature(tcp_linger)]
-
-extern crate eyra;
-
-mod net;
-
-use crate::net::test::{next_test_ip4, next_test_ip6};
+use super::net::test::{next_test_ip4, next_test_ip6};
 use std::fmt;
 use std::io::prelude::*;
 use std::io::{ErrorKind, IoSlice, IoSliceMut};
