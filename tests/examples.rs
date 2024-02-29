@@ -1,8 +1,6 @@
 //! Run the programs in the `examples` directory and compare their outputs with
 //! expected outputs.
 
-#![feature(cfg_target_abi)]
-
 extern crate eyra;
 
 use similar_asserts::assert_eq;
