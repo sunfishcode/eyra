@@ -11,7 +11,7 @@ jobs:
     name: Rustfmt
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: rustup update --no-self-update
     - run: cargo fmt --all -- --check
 
@@ -51,7 +51,7 @@ jobs:
             qemu_target: riscv64-linux-user
             host_target: riscv64gc-unknown-linux-gnu
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Configure Cargo target
       run: |
         echo CARGO_BUILD_TARGET=${{ matrix.target }} >> $GITHUB_ENV
