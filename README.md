@@ -41,6 +41,15 @@ fn main() {
 }
 ```
 
+And, to work around an LLVM bug, add the following to Cargo.toml:
+```toml
+# TODO: Remove this workaround when
+# https://github.com/llvm/llvm-project/pull/105513
+# makes it into the Rust compiler.
+[profile.dev.package.unwinding]
+debug = false
+```
+
 With that, `cargo build`, `cargo run`, `cargo test` (with Nightly) and so on
 will work normally with any `*-unknown-linux-gnu*` target.
 
