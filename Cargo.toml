@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.16.0", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.17.0", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -78,3 +78,9 @@ todo = ["c-gull/todo"]
 
 # Enable `unimplemented!()` stubs for deprecated functions.
 deprecated-and-unimplemented = ["c-gull/deprecated-and-unimplemented"]
+
+# TODO: Remove this workaround when
+# https://github.com/llvm/llvm-project/pull/105513
+# makes it into the Rust compiler.
+[profile.dev.package.unwinding]
+debug = false
