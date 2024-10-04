@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.17.0", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.18.0", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -23,14 +23,16 @@ libc = "0.2.151"
 cfg-if = "1.0.0"
 rand_xorshift = "0.3.0"
 
-# Test that the ctor crate works under mustang.
+# Test that the ctor crate works under eyra.
 ctor = "0.2.0"
 
 # Check if rustup is installed for tests
 which = "6.0.0"
 
-# Test that the core_simd crate works under mustang.
-core_simd = { git = "https://github.com/rust-lang/portable-simd" }
+# Test that the core_simd crate works under eyra.
+# TODO: Reenable this when the crate compiles on nightly. Currently it gets:
+#  - error[E0511]: invalid monomorphization of `simd_shuffle` intrinsic: simd_shuffle index must be a SIMD vector of `u32`, got `[u32; 4]`
+#core_simd = { git = "https://github.com/rust-lang/portable-simd" }
 
 # When generating documentation for docs.rs, don't enable "be-std", since we
 # don't need to duplicate std's documentation.
@@ -78,9 +80,3 @@ todo = ["c-gull/todo"]
 
 # Enable `unimplemented!()` stubs for deprecated functions.
 deprecated-and-unimplemented = ["c-gull/deprecated-and-unimplemented"]
-
-# TODO: Remove this workaround when
-# https://github.com/llvm/llvm-project/pull/105513
-# makes it into the Rust compiler.
-[profile.dev.package.unwinding]
-debug = false
