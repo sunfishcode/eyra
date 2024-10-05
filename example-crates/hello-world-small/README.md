@@ -7,16 +7,16 @@ It uses the [workaround to support -Zbuild-std], and can be built with
 a command like this:
 
 ```console
-$ RUSTFLAGS="-Zlocation-detail=none -C relocation-model=static -Ctarget-feature=+crt-static" cargo +nightly run -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu --release
+$ RUSTFLAGS="-Z location-detail=none -C relocation-model=static -Ctarget-feature=+crt-static" cargo +nightly run -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu --release
 ```
 
 This applies all the techniques described on the [min-sized-rust] page
 before [Remove `core::fmt` with `no_main` and Careful Usage of `libstd`].
 
-As of this writing, this compiles to 37880 bytes. For comparison, using all
+As of this writing, this compiles to 24,616 bytes. For comparison, using all
 these same optimizations without Eyra, and using `x86_64-unknown-linux-musl`
 (which produces smaller statically-linked binaries than
-`x86_64-unknown-linux-gnu`), compiles to 50776 bytes.
+`x86_64-unknown-linux-gnu`), compiles to 30,288 bytes.
 
 If you're interested in going further down the `#![no_main]`/`#![no_std]`
 path, consider [using Origin directly] which can get down to 408 bytes. Or,
