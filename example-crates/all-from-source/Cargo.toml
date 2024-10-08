@@ -5,8 +5,6 @@ edition = "2021"
 publish = false
 
 [dependencies]
-# Disable the "use-compiler-builtins" feature, to ensure that we build
-# `memcpy` etc. from source instead of using the prebuilt library.
 eyra = { path = "../..", default-features = false, features = ["be-std", "threadsafe-setenv"] }
 
 [profile.release]
