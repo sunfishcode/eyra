@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.18.0", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.19.1", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -40,7 +40,7 @@ which = "6.0.0"
 no-default-features = true
 
 [features]
-default = ["be-std", "threadsafe-setenv", "use-compiler-builtins"]
+default = ["be-std", "threadsafe-setenv"]
 
 # Enable features that depend on std. Disable this for `no_std`.
 std = ["c-gull/std"]
@@ -67,9 +67,6 @@ experimental-relocate = ["c-gull/experimental-relocate"]
 # Have eyra do `use std::*;` so that it can be used as `std`.
 be-std = ["std"]
 
-# Should c-scape's `memcpy` etc. use compiler-builtins?
-use-compiler-builtins = ["c-gull/use-compiler-builtins"]
-
 # This extends the `syscall` function with suppport for more syscalls. This is
 # not enabled by default because it increases the code size of `syscall` by
 # several kibibytes and isn't needed by most Rust programs.
@@ -80,3 +77,42 @@ todo = ["c-gull/todo"]
 
 # Enable `unimplemented!()` stubs for deprecated functions.
 deprecated-and-unimplemented = ["c-gull/deprecated-and-unimplemented"]
+
+# Provide a `#[lang = eh_personality]` function suitable for unwinding (for
+# no-std).
+#
+# If you know your program never unwinds and want smaller code size, use
+# "eh-personality-continue" instead.
+#
+# This is only needed in no-std builds, as std provides a personality. See
+# [the "personality" feature of the unwinding crate] for more details.
+#
+# [the "personality" feature of the unwinding crate]: https://crates.io/crates/unwinding#personality-and-other-utilities
+eh-personality = ["c-gull/eh-personality"]
+
+# Provide a `#[lang = eh_personality]` function that just returns
+# `CONTINUE_UNWIND` (for no-std). Use this if you know your program will never
+# unwind and don't want any extra code.
+eh-personality-continue = ["c-gull/eh-personality-continue"]
+
+# Provide a `#[panic_handler]` function suitable for unwinding (for no-std).
+#
+# If you know your program never panics and want smaller code size, use
+# "panic-handler-abort" instead.
+#
+# This is only needed in no-std builds, as std provides a panic handler. See
+# [the "panic-handler" feature of the unwinding crate] for more details.
+#
+# [the "panic-handler" feature of the unwinding crate]: https://crates.io/crates/unwinding#personality-and-other-utilities
+panic-handler = ["c-gull/panic-handler"]
+
+# Provide a `#[panic_handler]` function that just aborts (for no-std). Use this
+# if you know your program will never panic and don't want any extra code.
+panic-handler-abort = ["c-gull/panic-handler-abort"]
+
+# Provide a `#[global_allocator]` function (for no-std).
+#
+# This is only needed in no-std builds, as std provides a global allocator.
+# Alternatively, you can define the global allocator manually; see the
+# example-crates/custom-allocator example.
+global-allocator = ["c-gull/global-allocator"]
