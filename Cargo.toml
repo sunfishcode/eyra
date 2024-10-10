@@ -13,7 +13,7 @@ exclude = ["/.github", "ci"]
 keywords = ["linux"]
 
 [dependencies]
-c-gull = { version = "0.19.1", default-features = false, features = ["eyra"] }
+c-gull = { version = "0.20.0", default-features = false, features = ["eyra"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
@@ -98,7 +98,7 @@ eh-personality-continue = ["c-gull/eh-personality-continue"]
 # Provide a `#[panic_handler]` function suitable for unwinding (for no-std).
 #
 # If you know your program never panics and want smaller code size, use
-# "panic-handler-abort" instead.
+# "panic-handler-trap" instead.
 #
 # This is only needed in no-std builds, as std provides a panic handler. See
 # [the "panic-handler" feature of the unwinding crate] for more details.
@@ -106,9 +106,9 @@ eh-personality-continue = ["c-gull/eh-personality-continue"]
 # [the "panic-handler" feature of the unwinding crate]: https://crates.io/crates/unwinding#personality-and-other-utilities
 panic-handler = ["c-gull/panic-handler"]
 
-# Provide a `#[panic_handler]` function that just aborts (for no-std). Use this
+# Provide a `#[panic_handler]` function that just traps (for no-std). Use this
 # if you know your program will never panic and don't want any extra code.
-panic-handler-abort = ["c-gull/panic-handler-abort"]
+panic-handler-trap = ["c-gull/panic-handler-trap"]
 
 # Provide a `#[global_allocator]` function (for no-std).
 #
