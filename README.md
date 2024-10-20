@@ -166,6 +166,11 @@ Hello, world!
 
 ## Compatibility with `-Zbuild-std`
 
+At this time, a combination of Eyra, `-Zbuild-std`, and `panic = "abort"` does
+not work. See [nbdd0121/unwinding#39] for details. FIXME.
+
+[nbdd0121/unwinding#39]: https://github.com/nbdd0121/unwinding/issues/39
+
 Eyra works with `-Zbuild-std`, however the `--rename=std` trick used above
 doesn't work, so it's necessary to instead use this `cargo add` invocation:
 
