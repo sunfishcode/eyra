@@ -77,8 +77,8 @@ fn example_crate_hello_world_small() {
             "--release",
             // FIXME: When nbdd0121/unwinding#39 is fixed, this should be
             // "-Zbuild-std=std,panic_abort",
+            // "-Zbuild-std-features=panic_immediate_abort",
             "-Zbuild-std",
-            "-Zbuild-std-features=panic_immediate_abort",
         ],
         &[(
             "RUSTFLAGS",
