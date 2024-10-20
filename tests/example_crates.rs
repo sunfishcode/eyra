@@ -76,11 +76,11 @@ fn example_crate_hello_world_small() {
         &[
             "--release",
             "-Zbuild-std=std,panic_abort",
-            "-Zbuild-std-features=panic_immediate_abort",
+            "-Zbuild-std-features=panic_immediate_abort,optimize_for_size",
         ],
         &[(
             "RUSTFLAGS",
-            "-Zlocation-detail=none -Crelocation-model=static -Ctarget-feature=+crt-static",
+            "-Zlocation-detail=none -Zfmt-debug=none -Crelocation-model=static -Ctarget-feature=+crt-static",
         )],
         "Hello, world!\n",
         "",
