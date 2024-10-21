@@ -13,9 +13,7 @@ strip = true  # Automatically strip symbols from the binary.
 opt-level = "z"  # Optimize for size.
 lto = true
 codegen-units = 1
-# FIXME: `panic = "abort"` does not currently work with `-Zbuild-std` due
-# to <https://github.com/nbdd0121/unwinding/issues/39>.
-#panic = "abort"
+panic = "abort"
 
 # This is just an example crate, and not part of the eyra workspace.
 [workspace]
