@@ -7,7 +7,7 @@ It uses the [workaround to support -Zbuild-std], and can be built with
 a command like this:
 
 ```console
-$ RUSTFLAGS="-Z location-detail=none -C relocation-model=static -Ctarget-feature=+crt-static" cargo +nightly run -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu --release
+$ RUSTFLAGS="-Z location-detail=none -Zfmt-debug=none -C relocation-model=static -Ctarget-feature=+crt-static" cargo +nightly run -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort,optimize_for_size --target x86_64-unknown-linux-gnu --release
 ```
 
 This applies all the techniques described on the [min-sized-rust] page
