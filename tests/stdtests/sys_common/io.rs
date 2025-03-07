@@ -42,7 +42,7 @@ pub mod test {
 
     pub fn tmpdir() -> TempDir {
         let p = env::temp_dir();
-        let mut r = rand::thread_rng();
+        let mut r = rand::rng();
         let ret = p.join(&format!("rust-{}", r.next_u32()));
         fs::create_dir(&ret).unwrap();
         TempDir(ret)
