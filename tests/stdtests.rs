@@ -3,7 +3,7 @@
 #![feature(duration_constants)]
 #![feature(io_error_uncategorized)]
 #![feature(ip)]
-#![feature(maybe_uninit_uninit_array)]
+#![feature(maybe_uninit_uninit_array_transpose)]
 #![feature(once_cell_try)]
 #![feature(read_buf)]
 #![feature(tcp_linger)]
