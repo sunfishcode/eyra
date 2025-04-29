@@ -110,7 +110,7 @@ Why not use Eyra?
 It might seem like "memory safety" might be a reason to use Eyra, and Eyra does
 have a lot of code written in safe Rust, so it does benefit some from Rust's
 memory safety. However, Eyra also has a lot of `unsafe` code (it's unavoidable
-for implementing a libc). Until this code has been more throughly proven, it's
+for implementing a libc). Until this code has been more thoroughly proven, it's
 not realistic to consider it more safe than mature C code.
 
 [Whole-program LTO]: https://github.com/sunfishcode/eyra/tree/main/example-crates/hello-world-lto#readme

@@ -134,7 +134,7 @@ fn example_crate_eyra_panic_example() {
         &[],
         &[],
         "",
-        "thread 'main' panicked at src/main.rs:2:5:\nUh oh!\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
+        "\nthread 'main' panicked at src/main.rs:2:5:\nUh oh!\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
         Some(101)
     );
 }
